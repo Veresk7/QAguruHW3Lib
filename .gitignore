@@ -2,6 +2,7 @@ HELP.md
 .idea
 .gradle
 build/
+out/
 !**src**
 
 
