@@ -1,9 +1,12 @@
 package TextBox;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.commands.ShouldHave;
+import com.codeborne.selenide.conditions.Text;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -16,7 +19,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        //Configuration.holdBrowserOpen =  true;
+        Configuration.holdBrowserOpen =  true;
 
     }
 
@@ -49,35 +52,15 @@ public class PracticeFormTest {
         $("#submit").click();
 
         //Проверка заполения таблицы
-        $(".table-responsive") //Поиск таблицы по классу
-                .find(byText("Student Name")) //Поиск ячейки по значению
-                .closest("Sergei Sergeev"); //Поиск ближайшей ячейки по значению
-        $(".table-responsive")
-                .find(byText("Student Email"))
-                .closest("sergei_sergeev@mail.ru");
-        $(".table-responsive")
-                .find(byText("Gender"))
-                .closest("Male");
-        $(".table-responsive")
-                .find(byText("Mobile"))
-                .closest("88003002000");
-        $(".table-responsive")
-                .find(byText("Date of Birth"))
-                .closest("24 December,2025"); //Баг - нет проверки на невозможность ввести будущее время
-        $(".table-responsive")
-                .find(byText("Subjects"))
-                .closest("Hindi");
-        $(".table-responsive")
-                .find(byText("Hobbies"))
-                .closest("Sports, Reading");
-        $(".table-responsive")
-                .find(byText("Picture"))
-                .closest("example_image_hw3.jpg");
-        $(".table-responsive")
-                .find(byText("Address"))
-                .closest("Surviver Shtrasse 1");
-        $(".table-responsive")
-                .find(byText("State and City"))
-                .closest("Uttar Pradesh Agra");
+        $(".table-responsive").shouldHave(text("Sergei Sergeev"));
+        $(".table-responsive").shouldHave(text("sergei_sergeev@mail.ru"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("8800300200"));
+        $(".table-responsive").shouldHave(text("24 December,2025")); //Баг - нет проверки на невозможность ввести будущее время
+        $(".table-responsive").shouldHave(text("Hindi"));
+        $(".table-responsive").shouldHave(text("Sports, Reading"));
+        $(".table-responsive").shouldHave(text("example_image_hw3.jpg"));
+        $(".table-responsive").shouldHave(text("Surviver Shtrasse 1"));
+        $(".table-responsive").shouldHave(text("Uttar Pradesh Agra"));
     }
 }
