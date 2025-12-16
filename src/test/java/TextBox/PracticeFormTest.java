@@ -33,7 +33,7 @@ public class PracticeFormTest {
         $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("88003002000");
         $("#dateOfBirthInput").click();
-        $(".react-datepicker__year-select").$(byText("2000")).click();
+        $(".react-datepicker__year-select").$(byText("2070")).click();
         $(".react-datepicker__month-select").$(byText("September")).click();
         $(".react-datepicker__day--005").click();
         $("#subjectsContainer input").setValue("in"); //Ввод значения в текстовое поле выпадающего списка
@@ -53,7 +53,7 @@ public class PracticeFormTest {
         $(".table-responsive").shouldHave(text("sergei_sergeev@mail.ru"));
         $(".table-responsive").shouldHave(text("Male"));
         $(".table-responsive").shouldHave(text("8800300200"));
-        $(".table-responsive").shouldHave(text("05 September,2000")); //Баг - нет проверки на невозможность ввести будущее время
+        $(".table-responsive").shouldHave(text("05 September,2070")); //Баг - нет проверки на невозможность ввести будущее время
         $(".table-responsive").shouldHave(text("Hindi"));
         $(".table-responsive").shouldHave(text("Sports, Reading"));
         $(".table-responsive").shouldHave(text("example_image_hw3.jpg"));
