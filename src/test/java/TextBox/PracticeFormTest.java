@@ -36,16 +36,17 @@ public class PracticeFormTest {
         $(".react-datepicker__year-select").$(byText("2070")).click();
         $(".react-datepicker__month-select").$(byText("September")).click();
         $(".react-datepicker__day--005").click();
-        $("#subjectsContainer input").setValue("in"); //Ввод значения в текстовое поле выпадающего списка
-        $(byText("Hindi")).click();
-        $(byText("Sports")).click();
-        $(byText("Reading")).click();
+        $("#subjectsInput").setValue("hi");
+        $(".subjects-auto-complete__option").scrollTo();
+        $(".subjects-auto-complete__menu-list").$(byText("Hindi")).click();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("example_image_hw3.jpg");
         $("#currentAddress-wrapper .form-control").setValue("Surviver Shtrasse 1");
-        $(byText("Select State")).click();
-        $(byText("Uttar Pradesh")).click();
-        $(byText("Select City")).click();
-        $(byText("Agra")).click();
+        $("#state").click();
+        $(".css-26l3qy-menu").$(byText("Uttar Pradesh")).click();
+        $("#city").click();
+        $(".css-26l3qy-menu").$(byText("Agra")).click();
         $("#submit").click();
 
         //Проверка заполения таблицы
@@ -59,5 +60,7 @@ public class PracticeFormTest {
         $(".table-responsive").shouldHave(text("example_image_hw3.jpg"));
         $(".table-responsive").shouldHave(text("Surviver Shtrasse 1"));
         $(".table-responsive").shouldHave(text("Uttar Pradesh Agra"));
+
+
     }
 }
