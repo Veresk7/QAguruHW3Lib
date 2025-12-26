@@ -17,13 +17,13 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen =  false;
+        Configuration.holdBrowserOpen =  true;
 
     }
 
     //Шаги теста
     @Test
-    void positiveFormTest() {
+    void positiveMaxFormTest() {
         open("/automation-practice-form"); //Добавление в URL path-параметра для открытия нужной страницы
         executeJavaScript("$('#fixedban').remove()"); //Убираем банеры
         executeJavaScript("$('footer').remove()"); //Убираем футер
@@ -50,16 +50,17 @@ public class PracticeFormTest {
         $("#submit").click();
 
         //Проверка заполения таблицы
-        $(".table-responsive").shouldHave(text("Sergei Sergeev"));
-        $(".table-responsive").shouldHave(text("sergei_sergeev@mail.ru"));
-        $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("8800300200"));
-        $(".table-responsive").shouldHave(text("05 September,2070")); //Баг - нет проверки на невозможность ввести будущее время
-        $(".table-responsive").shouldHave(text("Hindi"));
-        $(".table-responsive").shouldHave(text("Sports, Reading"));
-        $(".table-responsive").shouldHave(text("example_image_hw3.jpg"));
-        $(".table-responsive").shouldHave(text("Surviver Shtrasse 1"));
-        $(".table-responsive").shouldHave(text("Uttar Pradesh Agra"));
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text("Sergei Sergeev"));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text("sergei_sergeev@mail.ru"));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text("Male"));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text("8800300200"));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text("05 September,2070")); //Баг - нет проверки на невозможность ввести будущее время
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text("Hindi"));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text("Sports, Reading"));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("example_image_hw3.jpg"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text("Surviver Shtrasse 1"));
+        $(".table-responsive").$(byText("State and City")). parent().shouldHave(text("Uttar Pradesh Agra"));
+
 
 
     }
