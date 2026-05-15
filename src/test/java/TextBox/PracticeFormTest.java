@@ -17,7 +17,7 @@ public class PracticeFormTest {
         Configuration.browserSize = "1920x1080";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen =  true;
+        Configuration.holdBrowserOpen =  false;
 
     }
 
@@ -25,8 +25,8 @@ public class PracticeFormTest {
     @Test
     void positiveMaxFormTest() {
         open("/automation-practice-form"); //Добавление в URL path-параметра для открытия нужной страницы
-        executeJavaScript("$('#fixedban').remove()"); //Убираем банеры
-        executeJavaScript("$('footer').remove()"); //Убираем футер
+//        executeJavaScript("$('#fixedban').remove()"); //Убираем банеры
+//        executeJavaScript("$('footer').remove()"); //Убираем футер
         $("#firstName").setValue("Sergei");
         $("#lastName").setValue("Sergeev");
         $("#userEmail").setValue("sergei_sergeev@mail.ru");
@@ -43,10 +43,10 @@ public class PracticeFormTest {
         $("#hobbiesWrapper").$(byText("Reading")).click();
         $("#uploadPicture").uploadFromClasspath("example_image_hw3.jpg");
         $("#currentAddress-wrapper .form-control").setValue("Surviver Shtrasse 1");
-        $("#state").click();
-        $(".css-26l3qy-menu").$(byText("Uttar Pradesh")).click();
-        $("#city").click();
-        $(".css-26l3qy-menu").$(byText("Agra")).click();
+        $("#react-select-3-input").click();
+        $(".css-1nmdiq5-menu").$(byText("Uttar Pradesh")).click();
+        $("#react-select-4-input").click();
+        $(".css-1nmdiq5-menu").$(byText("Agra")).click();
         $("#submit").click();
 
         //Проверка заполения таблицы
